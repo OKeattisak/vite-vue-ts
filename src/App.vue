@@ -1,30 +1,43 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from 'vue'
+import { useDisplay, useTheme } from 'vuetify'
+import { faker } from '@faker-js/faker'
+
+const { width, height, mobile } = useDisplay()
+const theme = useTheme()
+
+onMounted(() => {
+  console.log(width.value)
+  console.log(height.value)
+  console.log(mobile.value)
+})
+
+function toggleTheme() {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <v-app>
+    <v-app-bar>
+      <v-spacer></v-spacer>
+      <v-btn @click="toggleTheme" text="Toggle"></v-btn>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <v-card v-for="_ in 100" variant="tonal" class="mx-auto my-4">
+          <v-card-item>
+            <v-card-title>
+              {{ faker.person.fullName() }}
+            </v-card-title>
+          </v-card-item>
+          <v-card-text>
+            {{ faker.person.jobTitle() }}
+          </v-card-text>
+        </v-card>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
