@@ -19,7 +19,7 @@ function toggleTheme() {
 
 <template>
   <v-app>
-    <v-app-bar>
+    <v-app-bar title="App bar">
       <v-spacer></v-spacer>
       <v-btn @click="toggleTheme" text="Toggle"></v-btn>
     </v-app-bar>
@@ -37,6 +37,30 @@ function toggleTheme() {
         </v-card>
       </v-container>
     </v-main>
+
+    <v-bottom-navigation color="primary">
+      <v-btn value="home">
+        <v-icon>home</v-icon>
+        <span>หน้าหลัก</span>
+      </v-btn>
+
+      <v-btn value="redeem">
+        <v-icon>redeem</v-icon>
+        <span>ของรางวัล</span>
+      </v-btn>
+
+      <v-btn value="notifications">
+        <v-icon>notifications</v-icon>
+        <span>การแจ้งเตือน</span>
+      </v-btn>
+
+      <v-btn value="menu">
+        <v-icon>menu</v-icon>
+        <span>เมนู</span>
+      </v-btn>
+
+    </v-bottom-navigation>
+
   </v-app>
 </template>
 
