@@ -28,7 +28,7 @@ onMounted(() => {
     console.log(liff.getOS())
     console.log(liff.getLineVersion())
 
-    if (liff.isLoggedIn()) {
+    if (!liff.isLoggedIn()) {
       liff.login()
     }
 
