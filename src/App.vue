@@ -18,6 +18,7 @@ onMounted(() => {
 
   liff.init({
     liffId: '1661042942-4mrJnYZP',
+    withLoginOnExternalBrowser: true,
   }).then(() => {
     console.log(liff.getContext())
     console.log(liff.getLanguage())
@@ -26,6 +27,16 @@ onMounted(() => {
     console.log(liff.isLoggedIn())
     console.log(liff.getOS())
     console.log(liff.getLineVersion())
+
+    if (liff.isLoggedIn()) {
+      liff.login()
+    }
+
+    liff.getProfile().then((profile) => {
+      console.log(profile)
+    }).catch((error) => {
+      console.log(error)
+    })
   }).catch((error) => {
     console.log(error)
   })
