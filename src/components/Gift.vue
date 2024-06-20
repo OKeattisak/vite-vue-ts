@@ -58,5 +58,8 @@ onMounted(() => {
 <style scoped>
 .product-detail {
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>
