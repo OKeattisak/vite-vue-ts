@@ -16,30 +16,30 @@ onMounted(() => {
   console.log(mobile.value)
   console.log(vConsole.version)
 
-  // liff.init({
-  //   liffId: '1661042942-4mrJnYZP',
-  //   withLoginOnExternalBrowser: true,
-  // }).then(() => {
-  //   console.log(liff.getContext())
-  //   console.log(liff.getLanguage())
-  //   console.log(liff.getVersion())
-  //   console.log(liff.isInClient())
-  //   console.log(liff.isLoggedIn())
-  //   console.log(liff.getOS())
-  //   console.log(liff.getLineVersion())
+  liff.init({
+    liffId: '1661042942-4mrJnYZP',
+    withLoginOnExternalBrowser: true,
+  }).then(() => {
+    console.log(liff.getContext())
+    console.log(liff.getLanguage())
+    console.log(liff.getVersion())
+    console.log(liff.isInClient())
+    console.log(liff.isLoggedIn())
+    console.log(liff.getOS())
+    console.log(liff.getLineVersion())
 
-  //   if (!liff.isLoggedIn()) {
-  //     liff.login()
-  //   }
+    if (!liff.isLoggedIn()) {
+      liff.login()
+    }
 
-  //   liff.getProfile().then((profile) => {
-  //     console.log(profile)
-  //   }).catch((error) => {
-  //     console.log(error)
-  //   })
-  // }).catch((error) => {
-  //   console.log(error)
-  // })
+    liff.getProfile().then((profile) => {
+      console.log(profile)
+    }).catch((error) => {
+      console.log(error)
+    })
+  }).catch((error) => {
+    console.log(error)
+  })
 })
 
 function toggleTheme() {
