@@ -35,23 +35,32 @@ onMounted(() => {
 
 <template>
     <v-container>
-        <v-row>
-            <v-col v-for="product in products" :key="product.id" cols="6" md="3">
-                <v-card class="mx-auto">
-                    <v-img height="150px" :src="product.productImage" cover></v-img>
-                    <v-card-text class="product-detail">
-                        {{ product.productName }}
-                    </v-card-text>
+        <template v-if="isLoading">
+            <v-row justify="center" align="center" style="height: 85dvh;">
+                <v-col cols="auto">
+                    <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
+                </v-col>
+            </v-row>
+        </template>
+        <template v-else>
+            <v-row>
+                <v-col v-for="product in products" :key="product.id" cols="6" md="3">
+                    <v-card class="mx-auto">
+                        <v-img height="150px" :src="product.productImage" cover></v-img>
+                        <v-card-text class="product-detail">
+                            {{ product.productName }}
+                        </v-card-text>
 
-                    <v-badge color="primary" inline :content="product.product"></v-badge>
+                        <v-badge color="primary" inline :content="product.product"></v-badge>
 
-                    <v-card-actions class="product-detail">
-                        {{ product.price }} พอยท์
-                        <v-spacer></v-spacer>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
+                        <v-card-actions class="product-detail">
+                            {{ product.price }} พอยท์
+                            <v-spacer></v-spacer>
+                        </v-card-actions>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </template>
     </v-container>
 </template>
 

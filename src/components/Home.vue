@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker'
 
 <template>
     <v-container>
-        <v-card v-for="_ in 100" variant="tonal" class="mx-auto my-4">
+        <v-card v-for="_ in 20" variant="tonal" class="mx-auto my-4">
             <v-card-item>
                 <v-card-title>
                     {{ faker.person.fullName() }}
