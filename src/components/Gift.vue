@@ -11,7 +11,7 @@ interface Product {
 }
 
 const isLoading = ref(true)
-const products = ref<Product[]>([]);
+const products = ref<Product[]>([])
 console.log(isLoading.value)
 
 onMounted(() => {
