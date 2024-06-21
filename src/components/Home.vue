@@ -35,46 +35,53 @@ onMounted(() => {
 
 <template>
     <v-container>
+        <template v-if="isLoading">
+            <v-row justify="center" align="center" style="height: 85dvh;">
+                <v-col cols="auto">
+                    <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
+                </v-col>
+            </v-row>
+        </template>
 
-        <v-tabs color="green-darken-3" class="mb-3" v-model="tab">
-            <v-tab value="news">ข่าวสาร</v-tab>
-            <v-tab value="promotions">โปรโมชั่น</v-tab>
-        </v-tabs>
+        <template v-else>
+            <v-tabs color="green-darken-3" class="mb-3" v-model="tab">
+                <v-tab value="news">ข่าวสาร</v-tab>
+                <v-tab value="promotions">โปรโมชั่น</v-tab>
+            </v-tabs>
+            <v-tabs-window v-model="tab">
+                <v-tabs-window-item value="news">
+                    <v-row>
+                        <v-col v-for="item in news" :key="item.id" cols="12" sm="6" md="4" lg="3">
+                            <v-card class="mx-auto">
+                                <v-card-item class="px-0 py-0">
+                                    <v-img max-height="350px"
+                                        :src="`https://xpax-api.wynnovas.com/api/inforcover/${item.id}.png`"></v-img>
+                                </v-card-item>
+                                <v-card-text>
+                                    <div class="item-name py-4">{{ item.name }}</div>
+                                </v-card-text>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-tabs-window-item>
 
-        <v-tabs-window v-model="tab">
-            <v-tabs-window-item value="news">
-                <v-row>
-                    <v-col v-for="item in news" :key="item.id" cols="12" sm="6" md="4" lg="3">
-                        <v-card class="mx-auto">
-                            <v-card-item class="px-0 py-0">
-                                <v-img max-height="350px"
-                                    :src="`https://xpax-api.wynnovas.com/api/inforcover/${item.id}.png`"></v-img>
-                            </v-card-item>
-                            <v-card-text>
-                                <div class="item-name py-4">{{ item.name }}</div>
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                </v-row>
-            </v-tabs-window-item>
-
-            <v-tabs-window-item value="promotions">
-                <v-row>
-                    <v-col v-for="item in news" :key="item.id" cols="12" sm="6" md="4" lg="3">
-                        <v-card class="mx-auto">
-                            <v-card-item class="px-0 py-0">
-                                <v-img max-height="350px"
-                                    :src="`https://xpax-api.wynnovas.com/api/inforcover/${item.id}.png`"></v-img>
-                            </v-card-item>
-                            <v-card-text>
-                                <div class="item-name py-4">{{ item.name }}</div>
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                </v-row>
-            </v-tabs-window-item>
-        </v-tabs-window>
-
+                <v-tabs-window-item value="promotions">
+                    <v-row>
+                        <v-col v-for="item in news" :key="item.id" cols="12" sm="6" md="4" lg="3">
+                            <v-card class="mx-auto">
+                                <v-card-item class="px-0 py-0">
+                                    <v-img max-height="350px"
+                                        :src="`https://xpax-api.wynnovas.com/api/inforcover/${item.id}.png`"></v-img>
+                                </v-card-item>
+                                <v-card-text>
+                                    <div class="item-name py-4">{{ item.name }}</div>
+                                </v-card-text>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-tabs-window-item>
+            </v-tabs-window>
+        </template>
     </v-container>
 </template>
 
